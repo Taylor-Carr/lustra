@@ -1,6 +1,6 @@
 // Typing Animation for "Media" -> "Marketing"
 document.addEventListener("DOMContentLoaded", function () {
-  const words = ["Media..", "Marketing.."];
+  const words = ["Media..", "Marketing..", "Management.."];
   const typedWord = document.getElementById("typed-word");
 
   let wordIndex = 0;
