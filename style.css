@@ -59,6 +59,72 @@ html {
   color: var(--light-pink);
 }
 
+/* Existing nav styles remain the same above this */
+
+/* Burger icon (hidden by default) */
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: end;
+  width: 24px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.burger span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: var(--navy);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Toggle animation */
+.burger.active span:nth-child(1) {
+  transform: translateY(7.5px) rotate(45deg);
+}
+
+.burger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.burger.active span:nth-child(3) {
+  transform: translateY(-7.5px) rotate(-45deg);
+}
+
+/* Mobile Menu Styles */
+@media (max-width: 768px) {
+  .burger {
+    display: flex;
+    margin-left: auto;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background: var(--cream);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    width: 200px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: none;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .nav-links a {
+    padding: 0.5rem 0;
+    width: 100%;
+  }
+}
+
 
 /* Hero Section */
 
@@ -90,6 +156,7 @@ html {
   max-width: 1200px;
   margin: 0.5rem auto 0.5rem;
   position: relative;
+  z-index: -1;
 }
 
 .hero-image {
@@ -150,19 +217,65 @@ html {
 
 /* Responsive */
 @media (max-width: 768px) {
+  /* Navigation */
   .nav-links {
     flex-wrap: wrap;
     justify-content: center;
   }
 
+  /* Hero Section */
   .hero {
     text-align: center;
+    padding: 0 1rem;
   }
 
-  .hero h1 {
+  .animated-title {
     font-size: 2rem;
+    line-height: 1.2;
+    font-weight: 300;
+    font-family: 'Poppins', sans-serif;
+    color: #222;
+    margin: 0;
+    margin-top: 3rem;
+    margin-bottom: 1.2rem;
+    line-height: 1.1; 
+    padding: 0;
+    text-align: left;
+  }
+
+  .hero-container {
+    padding: 0.8rem 1rem;
+    width: 90%;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* forces all child elements left */
+  }
+
+  .hero-card-title {
+    font-size: 1.1rem;
+    line-height: 1.3;
+    text-align: left;
+    font-weight: 500
+  }
+
+  .hero-card-paragraph {
+    font-size: 0.9rem;
+    max-width: 100%;
+    margin: 0 auto 1rem;
+    text-align: left;
+  }
+
+  .btn-primary {
+    font-size: 0.8rem;
+    padding: 0.4rem 1rem;
+    margin-bottom: 10px;
+    align-self: flex-start;
+    margin-left: 0;
   }
 }
+
 
 
 /* ===========================
@@ -201,17 +314,6 @@ html {
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-/* Infinite scroll animation */
-@keyframes scroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-
 /* Fade edges */
 .fade {
   position: absolute;
@@ -232,14 +334,65 @@ html {
   background: linear-gradient(to left, rgba(253, 245, 230, 1) 0%, rgba(253, 245, 230, 0) 100%);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .carousel-slide img {
-    height: 40px;
-    margin: 0 25px;
+
+/* Infinite scroll animation */
+@keyframes scroll {
+  from {
+    transform: translateX(0);
   }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .logo-carousel {
+    padding: 1.5rem 0;
+  }
+
+  .carousel-slide {
+    gap: 1rem;
+  }
+
+  .carousel-slide img {
+    width: 20px;
+  }
+
   .fade {
     width: 60px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .logo-carousel {
+    padding: 1.4rem 0 0 0;
+  }
+
+  .carousel-slide {
+    gap: 0.4rem;
+  }
+
+  .carousel-slide img {
+    width: 20px;
+    opacity: 0.85;
+  }
+
+  .fade {
+    display: none; 
+  }
+}
+
+/* Very small screens */
+@media (max-width: 480px) {
+  .carousel-slide img {
+    width: 20px;
+    opacity: 0.8;
+  }
+
+  .carousel-slide {
+    gap: 0.3rem;
   }
 }
 
@@ -294,7 +447,35 @@ html {
   padding: 0 20px 20px;
 }
 
-/* vertical line */
+/* Mobile */
+@media (max-width: 768px) {
+  .timeline .container {
+  background: #fdf5e6;
+  border-radius: 16px;
+  padding: 10px 10px;
+  margin: 0 auto;
+}
+
+  .timeline h2 {
+  margin-top: 0.5rem;
+  text-align: left;
+  font-size: 1.6rem;
+  line-height: 1.3;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: #222;
+}
+.timeline .subtitle {
+  font-weight: 400;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  text-align: left;
+  color: rgba(0, 0, 0, 0.7);
+  margin-bottom: 10px;
+}
+}
+
+/* vertical scroll line */
 .timeline-line {
   position: absolute;
   left: 50%;
@@ -430,6 +611,76 @@ html {
     margin-top: 40px;
   }
 }
+
+/* Mobile */
+@media (max-width: 768px) {
+
+  .timeline-image {
+    display: none;
+  }
+
+  /* Stack items vertically */
+  .timeline-item {
+    flex-direction: column;
+    align-items: flex-end; /* aligns text on the right */
+    text-align: right;
+    margin: 0 0 60px 0;
+    position: relative;
+  }
+
+  /* Make sure text fits well */
+  .timeline-content {
+    width: 90%;
+    margin-right: 3rem; /* adds space between text and line */
+  }
+
+  .timeline-content h3 {
+    font-size: 1rem;
+    text-align: left;
+  }
+
+  .timeline-content p {
+    font-size: 1rem;
+    line-height: 1.5;
+    text-align: left;
+  }
+
+  /* Reduce padding for container */
+  .timeline .container {
+    padding: 10px 10px;
+  }
+  
+  .timeline-line {
+    right: 40px; /* moves the line further right */
+    left: auto;
+    transform: none;
+  }
+
+  /* Align circles perfectly on the line */
+  .timeline-circle {
+    right: 23px; /* must match the line’s position */
+    left: auto;
+    transform: translate(50%, -50%) !important; /* centers the line through circle */
+    transition: none !important;
+  }
+
+  .timeline-item.active .timeline-circle {
+    transform: translate(50%, -50%) !important;
+  }
+
+  /* Adjust text spacing so it doesn’t overlap */
+  .timeline-content {
+    width: 85%;
+    margin-right: 4.5rem; /* adds gap between text and circles */
+    text-align: left;
+  }
+
+  /* Hide images on small screens */
+  .timeline-image {
+    display: none;
+  }
+}
+
 
 /* ============ SERVICES SECTION ============ */
 .services-section {
@@ -617,33 +868,100 @@ details[open] summary::after {
 
 /* Responsive */
 @media (max-width: 768px) {
-  .services-contact-cta h3 {
-    font-size: 1.4rem;
-  }
 
-  .services-contact-cta p {
-    font-size: 0.95rem;
-  }
+.services-container {
+  background: #111;
+  border-radius: 24px;
+  padding: 20px 20px;
+  max-width: 1100px;
+  width: 100%;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+ }
+
+ .services-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.highlight::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0.05em;
+  width: 100%;
+  height: 0.04em;
+  background: #ffb6c1;
+  border-radius: 1px;
+  z-index: -1;
+}
+
+.accordion summary {
+  font-weight: 400;
+  font-size: 1rem;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 
-/* Responsive */
-@media (max-width: 768px) {
-  .services-container {
-    padding: 60px 30px;
-  }
+.services-icon {
+  width: 40px;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-  .services-header h2 {
-    font-size: 2rem;
-  }
+}
 
-  .services-footer {
-    flex-direction: column;
-  }
+.highlight-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #fff;
+  line-height: 1.3;
+}
 
-  .footer-card {
-    flex: 1 1 100%;
-  }
+.services-contact-cta h3 {
+  font-size: 1.4rem;
+}
+
+.services-contact-cta p {
+  font-size: 0.85rem;
+}
+
+
+.services-header h2 {
+  font-size: 1.4rem;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  line-height: 1.4;
+
+}
+
+.services-contact-cta .cta-btn {
+  display: inline-block;
+  background: #f193b2;
+  color: #111;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+  padding: 4px 28px;
+  border-radius: 40px;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.services-footer {
+  flex-direction: column;
+}
+
+.footer-card {
+  flex: 1 1 100%;
+}
 }
 
 
@@ -690,6 +1008,7 @@ details[open] summary::after {
   margin-bottom: 15px;
   color: #f193b2;
 }
+
 
 .footer-links ul {
   font-size: 0.8rem;
@@ -762,4 +1081,15 @@ details[open] summary::after {
   .footer {
     padding: 60px 20px 30px;
   }
+
+  .footer-links-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-links {
+  flex: 1 1 45%; /* each takes roughly half width */
+}
 }
