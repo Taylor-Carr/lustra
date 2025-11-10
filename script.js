@@ -93,3 +93,32 @@ faqItems.forEach(item => {
     });
   });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+  const openBtn  = document.getElementById('open-privacy');
+  const modal    = document.getElementById('privacy-modal');
+  const closeBtn = document.getElementById('close-privacy');
+
+  function openModal(e){
+    e.preventDefault();
+    modal.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+    modal.querySelector('button, a, input, [tabindex]:not([tabindex="-1"])')?.focus();
+  }
+
+  function closeModal(){
+    modal.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+  }
+
+  openBtn?.addEventListener('click', openModal);
+  closeBtn?.addEventListener('click', closeModal);
+
+  modal.addEventListener('mousedown', function(e){
+    if(e.target === modal) closeModal();
+  });
+
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeModal();
+  });
+});
