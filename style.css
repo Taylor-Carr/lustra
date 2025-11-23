@@ -157,24 +157,22 @@ html {
   padding: 0;
 }
 
-  .hero-container {
-  border-radius: 14px;
-  padding: 0.4rem 1rem;
-  width: 90%;
-  margin: 0 auto;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  background-image: url("images/hero-background.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  box-shadow: 0 0 20px rgba(253, 165, 190, 0.45),
-              0 0 20px rgba(255, 218, 233, 0.3);
+.hero-container {
+border-radius: 14px;
+padding: 0.4rem 2rem;
+width: 90%;
+margin: 0 auto;
+position: relative;
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+background-color: #fdf5e6;
+box-shadow: 0 0 20px rgba(253, 165, 190, 0.45),
+            0 0 20px rgba(255, 218, 233, 0.3);
 
-  /* Optional: soften text contrast */
-  backdrop-filter: blur(2px);
+/* Optional: soften text contrast */
+backdrop-filter: blur(2px);
+margin-bottom: 20px;
 }
 
 
