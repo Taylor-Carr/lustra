@@ -177,16 +177,7 @@ html {
   backdrop-filter: blur(2px);
 }
 
-.hero-image {
-  margin-right: 2rem;
-  margin-bottom: 1rem;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 140px; /* adjust size */
-  opacity: 0.9; /* optional translucent effect */
-  pointer-events: none;
-}
+
 
 #typed-word {
   color: #f193b2;
