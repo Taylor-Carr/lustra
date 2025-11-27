@@ -42,6 +42,8 @@ document.addEventListener("DOMContentLoaded", function () {
   type();
 });
 
+
+
 // Timeline scroll animation
 document.addEventListener("scroll", () => {
   const line = document.querySelector(".timeline-line");
@@ -122,3 +124,4 @@ document.addEventListener('DOMContentLoaded', function() {
     if(e.key === 'Escape') closeModal();
   });
 });
+
